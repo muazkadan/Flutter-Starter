@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_starter/base/Screen.dart';
+import 'package:flutter_starter/screen/details/details_screen.dart';
 import 'package:flutter_starter/screen/home/HomeData.dart';
 import 'package:flutter_starter/screen/home/HomeViewModel.dart';
 import 'package:provider/provider.dart';
@@ -30,7 +31,13 @@ class _HomeScreenState
               final category = categories[index];
               return InkWell(
                 onTap: () {
-                  // TODO - Navigate to news list screen
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DetailsScreen(
+                          category: category.id, title: category.name),
+                    ),
+                  );
                 },
                 child: Card(
                   child: Center(

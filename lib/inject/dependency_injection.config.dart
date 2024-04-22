@@ -12,6 +12,7 @@ import 'package:dio/dio.dart' as _i4;
 import 'package:flutter_starter/data/repository/news_repository.dart' as _i7;
 import 'package:flutter_starter/factory/ViewModelFactory.dart' as _i6;
 import 'package:flutter_starter/network/rest_client.dart' as _i5;
+import 'package:flutter_starter/screen/details/details_viewmodel.dart' as _i8;
 import 'package:flutter_starter/screen/home/HomeViewModel.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
@@ -34,6 +35,8 @@ extension GetItInjectableX on _i1.GetIt {
     gh.singleton<_i6.ViewModelFactory>(() => _i6.ViewModelFactoryImpl());
     gh.singleton<_i7.NewsRepository>(
         () => _i7.NewsRepository(gh<_i5.RestClient>()));
+    gh.factory<_i8.DetailsViewModel>(
+        () => _i8.DetailsViewModel(gh<_i7.NewsRepository>()));
     return this;
   }
 }
