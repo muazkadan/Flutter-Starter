@@ -17,7 +17,11 @@ abstract class RestClient {
 @module
 abstract class InjectableModule {
   @singleton
-  Dio get dio => Dio();
+  Dio get dio {
+    final dio = Dio();
+    dio.interceptors.add(LogInterceptor(responseBody: true));
+    return dio;
+  }
 
   @lazySingleton
   RestClient get restClient => RestClient(getIt<Dio>());
